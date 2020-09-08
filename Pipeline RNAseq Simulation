@@ -46,11 +46,11 @@ STAR --runMode genomeGenerate \
 # Mapping and counting
 for fastq in ~/*-trimmed.fastq.gz; 
 do echo $fastq; 
-STAR --genomeDir index_star_chr8 
-     --readFilesIn $fastq 
-     --readFilesCommand zcat 
-     --outSAMtype BAM SortedByCoordinate 
-     --quantMode GeneCounts 
+STAR --genomeDir index_star_chr8 \
+     --readFilesIn $fastq \
+     --readFilesCommand zcat \ 
+     --outSAMtype BAM SortedByCoordinate \ 
+     --quantMode GeneCounts \
      --outFileNamePrefix alignments_STAR/$(basename $fastq -trimmed.fastq.gz); 
 done
 
