@@ -28,7 +28,10 @@ skewer ~/SRR11241435_1_fastq.gz \
                 -o SRR11241435_1_trim \
                 -z
 
-Indexation
+# Downloading Annotated Ref sequence
+wget ftp://ftp.ensembl.org/pub/release-101/gff3/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3.gz
+
+# Indexation
 STAR --runMode genomeGenerate 
      --genomeDir index_star_chr8 
      --genomeFastaFiles ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa 
@@ -37,4 +40,22 @@ STAR --runMode genomeGenerate
      --outFileNamePrefix Scerevisiae_chr8 -
      --runThreadN 2
 
+# Mapping and counting
+for fastq in ~/*-trimmed.fastq.gz; 
+do echo $fastq; 
+STAR --genomeDir index_star_chr8 
+     --readFilesIn $fastq 
+     --readFilesCommand zcat 
+     --outSAMtype BAM SortedByCoordinate 
+     --quantMode GeneCounts 
+     --outFileNamePrefix alignments_STAR/$(basename $fastq -trimmed.fastq.gz); 
+done
 
+head SRR11241433_1_trimReadsPerGene.out.tab
+
+#output
+N_unmapped        3212824 3212824 3212824
+N_multimapping     8347     8347       8347
+N_noFeature        11363   210080     13660
+N_ambiguous        0             0             0
+MissingGeneID        206149       7432    203852 
