@@ -11,7 +11,6 @@ conda install -c bioconda star
 conda install -c bioconda htseq
 conda install -c bioconda qualimap
 conda install -c bioconda samtools
-conda install -c bioconda 
 
 # Generating yml file
 conda env export > phindhack_covdifex.yml
