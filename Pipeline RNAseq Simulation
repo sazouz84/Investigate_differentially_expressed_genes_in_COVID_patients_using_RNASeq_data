@@ -25,9 +25,9 @@ fastqc ~/*fastq.gz -o
 
 # Trimming
 skewer ~/SRR11241435_1_fastq.gz \
-                -x TGGAATTCTCGGGTGCCAAGG \
-                -o SRR11241435_1_trim \
-                -z
+      -x TGGAATTCTCGGGTGCCAAGG \
+      -o SRR11241435_1_trim \
+      -z
 
 # Downloading Annotated Ref sequence and converting to gtf file
 wget ftp://ftp.ensembl.org/pub/release-101/gff3/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3.gz
