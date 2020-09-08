@@ -10,7 +10,7 @@ conda install -c bioconda star
 conda install -c bioconda htseq
 
 # Generating yml file
-conda env export > phindhack_covdifex
+conda env export > phindhack_covdifex.yml
 
 # Downloading SRR 
 fastq-dump --gzip --origfmt --split-files --skip-technical SRR11241433 SRR11241435
