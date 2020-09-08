@@ -29,14 +29,16 @@ skewer ~/SRR11241435_1_fastq.gz \
                 -o SRR11241435_1_trim \
                 -z
 
-# Downloading Annotated Ref sequence
+# Downloading Annotated Ref sequence and converting to gtf file
 wget ftp://ftp.ensembl.org/pub/release-101/gff3/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3.gz
+gunzip -df Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3.gz
+gffread Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 -T -o Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gtf
 
 # Indexation
 STAR --runMode genomeGenerate \ 
      --genomeDir index_star_chr8 \
      --genomeFastaFiles ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa \
-     --sjdbGTFfile ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 \
+     --sjdbGTFfile ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gtf \
      --sjdbOverhang 48 --genomeSAindexNbases 8 \
      --outFileNamePrefix Scerevisiae_chr8 \
      --runThreadN 2
