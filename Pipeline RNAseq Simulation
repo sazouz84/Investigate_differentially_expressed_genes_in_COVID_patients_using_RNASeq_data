@@ -1,0 +1,16 @@
+# Creating an environment
+conda create --name phindhack_covdifex
+conda activate phindhack_covdifex
+
+# Installing tools for RNAseq data analysis
+conda install -c bioconda sra-tool
+conda install -c bioconda fastqc
+conda install -c bioconda skewer
+conda install -c bioconda star
+conda install -c bioconda htseq
+
+# Generating yml file
+conda env export > phindhack_covdifex
+
+# Downloading SRR 
+
