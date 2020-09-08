@@ -19,5 +19,22 @@ fastq-dump --gzip --origfmt --split-files --skip-technical SRR11241433 SRR112414
 # Downloading Reference sequence
 wget ftp://ftp.ensembl.org/pub/release-101/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa.gz
 
+# Quality Control Checking
+fastqc ~/*fastq.gz -o
+
+# Trimming
+skewer ~/SRR11241435_1_fastq.gz \
+                -x TGGAATTCTCGGGTGCCAAGG \
+                -o SRR11241435_1_trim \
+                -z
+
+Indexation
+STAR --runMode genomeGenerate 
+     --genomeDir index_star_chr8 
+     --genomeFastaFiles ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa 
+     --sjdbGTFfile ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 
+     --sjdbOverhang 48 --genomeSAindexNbases 8 
+     --outFileNamePrefix Scerevisiae_chr8 -
+     --runThreadN 2
 
 
