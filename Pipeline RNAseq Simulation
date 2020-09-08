@@ -6,6 +6,7 @@ conda activate phindhack_covdifex
 conda install -c bioconda sra-tool
 conda install -c bioconda fastqc
 conda install -c bioconda skewer
+conda install -c bioconda gffread
 conda install -c bioconda star
 conda install -c bioconda htseq
 
