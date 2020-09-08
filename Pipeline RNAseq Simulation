@@ -33,11 +33,11 @@ wget ftp://ftp.ensembl.org/pub/release-101/gff3/saccharomyces_cerevisiae/Sacchar
 
 # Indexation
 STAR --runMode genomeGenerate 
-     --genomeDir index_star_chr8 
-     --genomeFastaFiles ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa 
-     --sjdbGTFfile ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 
-     --sjdbOverhang 48 --genomeSAindexNbases 8 
-     --outFileNamePrefix Scerevisiae_chr8 -
+     --genomeDir index_star_chr8 \
+     --genomeFastaFiles ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa \
+     --sjdbGTFfile ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 \
+     --sjdbOverhang 48 --genomeSAindexNbases 8 \
+     --outFileNamePrefix Scerevisiae_chr8 \
      --runThreadN 2
 
 # Mapping and counting
@@ -59,3 +59,12 @@ N_multimapping     8347     8347       8347
 N_noFeature        11363   210080     13660
 N_ambiguous        0             0             0
 MissingGeneID        206149       7432    203852 
+
+# Counting with htseq
+htseq-count -f bam -s yes -m intersection-strict ~/mapping/alignments_STAR/SRR11241433_1_trimAligned.sortedByCoord.out.bam \
+            ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 > SRR11241433_1.counts.txt
+            
+# Output
+Error occured when processing GFF file (line 12 of file /home/formation/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3):
+  Feature transcript:YHL050C_mRNA does not contain a 'gene_id' attribute
+  [Exception type: ValueError, raised in count.py:88]
