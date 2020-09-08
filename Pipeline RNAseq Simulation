@@ -56,12 +56,8 @@ done
 
 head SRR11241433_1_trimReadsPerGene.out.tab
 
-#output
-N_unmapped        3212824 3212824 3212824
-N_multimapping     8347     8347       8347
-N_noFeature        11363   210080     13660
-N_ambiguous        0             0             0
-MissingGeneID        206149       7432    203852 
+
+
 
 # Counting with htseq
 htseq-count -f bam -s yes -m intersection-strict ~/mapping/alignments_STAR/SRR11241433_1_trimAligned.sortedByCoord.out.bam \
