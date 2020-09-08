@@ -63,7 +63,4 @@ head SRR11241433_1_trimReadsPerGene.out.tab
 htseq-count -f bam -s yes -m intersection-strict ~/mapping/alignments_STAR/SRR11241433_1_trimAligned.sortedByCoord.out.bam \
             ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 > SRR11241433_1.counts.txt
             
-# Output
-Error occured when processing GFF file (line 12 of file /home/formation/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3):
-  Feature transcript:YHL050C_mRNA does not contain a 'gene_id' attribute
-  [Exception type: ValueError, raised in count.py:88]
+
