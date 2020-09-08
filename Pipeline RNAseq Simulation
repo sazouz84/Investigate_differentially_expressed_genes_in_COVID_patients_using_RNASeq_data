@@ -32,7 +32,7 @@ skewer ~/SRR11241435_1_fastq.gz \
 wget ftp://ftp.ensembl.org/pub/release-101/gff3/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3.gz
 
 # Indexation
-STAR --runMode genomeGenerate 
+STAR --runMode genomeGenerate \ 
      --genomeDir index_star_chr8 \
      --genomeFastaFiles ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa \
      --sjdbGTFfile ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 \
