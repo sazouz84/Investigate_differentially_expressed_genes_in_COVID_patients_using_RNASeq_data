@@ -13,4 +13,11 @@ conda install -c bioconda htseq
 conda env export > phindhack_covdifex
 
 # Downloading SRR 
+fastq-dump --gzip --origfmt --split-files --skip-technical SRR11241433 SRR11241435
+
+
+# Downloading Reference sequence
+wget ftp://ftp.ensembl.org/pub/release-101/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna.chromosome.VIII.fa.gz
+
+
 
