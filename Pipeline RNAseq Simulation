@@ -60,8 +60,6 @@ done
 head SRR11241433_1_trimReadsPerGene.out.tab
 
 
-
-
 # Counting with htseq
 htseq-count -f bam -s yes -m intersection-strict ~/mapping/alignments_STAR/SRR11241433_1_trimAligned.sortedByCoord.out.bam \
             ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gff3 > SRR11241433_1.counts.txt
@@ -71,8 +69,8 @@ cat SRR11241433_1.counts.txt
 # Comparaison between htseq and STAR
 
 
-# Alignment QC
-qualimap rnaseq -bam bam_chr6/SRR3091420_1_chr6-trimmedAligned.sortedByCoord.out.bam \
-        -gtf ~/rnaseq_course/reference_genome/reference_chr6/Homo_sapiens.GRCh38.88.chr6.gtf \
-        -outdir qc_qualimap \
-        -p non-strand-specific
+# Alignment QC     
+ qualimap  rnaseq -bam ~/alignments_STAR/SRR11241433_1_trimAligned.sortedByCoord.out.bam \
+          -gtf ~/reference_chr8/Saccharomyces_cerevisiae.R64-1-1.101.chromosome.VIII.gtf \
+          -outdir qc_qualimap \
+          -p non-strand-specific
