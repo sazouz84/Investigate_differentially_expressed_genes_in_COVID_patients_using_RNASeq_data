@@ -46,6 +46,9 @@ STAR --runMode genomeGenerate \
      --runThreadN 2
 
 # Mapping and counting
+
+
+
 for fastq in ~/*-trimmed.fastq.gz; 
 do echo $fastq; 
 STAR --genomeDir index_star_chr8 \
